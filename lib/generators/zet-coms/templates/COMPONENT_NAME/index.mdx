@@ -1,0 +1,61 @@
+---
+name: <%= comsName %>
+menu: <%= comsMenu %>
+---
+
+import { Playground, PropsTable } from 'docz';
+import { State, Toggle } from 'react-powerplug';
+import { Button } from 'antd';
+import { <%= comsMenu% > } from '../../index.js';
+import { LocaleProviderHoc } from '../../utils/hoc.js';
+
+import { data } from './_mock';
+
+# <%= comsName%>
+
+## 使用
+<%= comsMess %>
+
+
+## 参数模板
+
+### 组件输出接口数据
+```
+[
+  {
+
+  }
+]
+```
+
+## 案例介绍
+
+<% if (isTypeScript) { %>
+    <Playground>
+      <State initial={{disabled: false, value: []}}>
+        {({ state, setState }) => (
+          <React.Fragment>
+            // use your component
+          </React.Fragment>
+        )}
+      </State>
+    </Playground>
+  <% } else { %>
+    <Playground>
+      <State>
+         {({ state={currLocale:'zh_CH'}, setState }) => {
+           // export your component
+           return (
+             LocaleProviderHoc(
+                // use your component
+             )
+           )
+         }}
+      </State>
+    </Playground>
+  <% } %>
+
+
+## API
+
+<PropsTable of={<%=comsMenu %>.<%=comsName %>} />
